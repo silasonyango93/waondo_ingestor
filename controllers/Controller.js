@@ -13,4 +13,16 @@ router.post('/fetch_all_students',urlencodedParser, async (request,response) => 
     response.send(result);
 });
 
+router.post('/fetch_a_student_fee_statement',urlencodedParser, async (request,response) => {
+    let admissionNumber = request.body.admissionNumber;
+    let result = await Repository.fetchAStudentFeeStatement(admissionNumber)
+    response.send(result[0]);
+});
+
+router.post('/fetch_a_student_installments',urlencodedParser, async (request,response) => {
+    let admissionNumber = request.body.admissionNumber;
+    let result = await Repository.fetchAStudentInstallments(admissionNumber)
+    response.send(result);
+});
+
 module.exports = router;
